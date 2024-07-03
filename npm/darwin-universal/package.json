@@ -1,0 +1,15 @@
+{
+  "name": "pdf-to-image-darwin-universal",
+  "version": "0.0.0",
+  "os": [
+    "darwin"
+  ],
+  "main": "pdf-to-image.darwin-universal.node",
+  "files": [
+    "pdf-to-image.darwin-universal.node"
+  ],
+  "license": "MIT",
+  "engines": {
+    "node": ">= 10"
+  }
+}

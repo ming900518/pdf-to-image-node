@@ -1,0 +1,36 @@
+[package]
+name = "pdf-to-image-node"
+version = "0.1.0"
+edition = "2021"
+authors = ["Ming Chang <mail@mingchang.tw>"]
+repository = "https://github.com/ming900518/pdf-to-image-node"
+
+[lib]
+crate-type = ["cdylib"]
+
+[dependencies]
+napi = { version = "2.16.8", default-features = false, features = ["napi8"] }
+cairo-rs = { version = "0.19.4", features = ["pdf", "png"] }
+poppler-rs = "0.23.0"
+napi-derive = "2.16.8"
+[build-dependencies]
+napi-build = "2.1.3"
+
+[profile.release]
+codegen-units = 1
+lto = "fat"
+panic = "abort"
+opt-level = 3
+strip = "symbols"
+
+[lints.clippy]
+module_name_repetitions = "allow"
+similar_names = "allow"
+struct_field_names = "allow"
+items_after_statements = "allow"
+needless_return = "allow"
+cognitive-complexity = "allow"
+needless_pass_by_value = "allow"
+all = { level = "warn", priority = -1 }
+pedantic = { level = "warn", priority = -1 }
+nursery = { level = "warn", priority = -1 }
