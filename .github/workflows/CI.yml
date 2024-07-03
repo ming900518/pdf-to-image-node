@@ -73,9 +73,10 @@ jobs:
               run: ${{ matrix.settings.setup }}
               if: ${{ matrix.settings.setup }}
               shell: bash
-            - name: Install dependencies
+            - name: Install macOS dependencies
               if: matrix.settings.host == macos-latest
               run: brew install pkg-config glib cairo poppler
+            - name: Install Linux dependencies
               if: matrix.settings.host == ubuntu-latest
               run: apt update && apt install build-essentials pkg-config libglib2.0-dev libcairo2-dev libpoppler-dev libpoppler-glib-dev
             - name: Setup node x86
