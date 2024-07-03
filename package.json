@@ -1,5 +1,5 @@
 {
-  "name": "pdf-to-image-node",
+  "name": "@mingchang137/pdf-to-image-node",
   "version": "0.1.0",
   "main": "index.js",
   "types": "index.d.ts",
@@ -40,5 +40,7 @@
     "pdf-to-image-node-linux-x64-gnu": "0.1.0",
     "pdf-to-image-node-linux-x64-musl": "0.1.0",
     "pdf-to-image-node-darwin-universal": "0.1.0"
-  }
+  },
+  "repository": "https://github.com/ming900518/pdf-to-image-node",
+  "description": "不依賴 canvas 的 PDF 轉圖片 Node.js Library"
 }

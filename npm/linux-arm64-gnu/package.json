@@ -1,5 +1,5 @@
 {
-  "name": "pdf-to-image-linux-arm64-gnu",
+  "name": "@mingchang137/pdf-to-image-node-linux-arm64-gnu",
   "version": "0.1.0",
   "os": [
     "linux"
@@ -7,14 +7,16 @@
   "cpu": [
     "arm64"
   ],
-  "main": "pdf-to-image.linux-arm64-gnu.node",
+  "main": "pdf-to-image-node.linux-arm64-gnu.node",
   "files": [
-    "pdf-to-image.linux-arm64-gnu.node"
+    "pdf-to-image-node.linux-arm64-gnu.node"
   ],
+  "description": "不依賴 canvas 的 PDF 轉圖片 Node.js Library",
   "license": "MIT",
   "engines": {
     "node": ">= 10"
   },
+  "repository": "https://github.com/ming900518/pdf-to-image-node",
   "libc": [
     "glibc"
   ]
