@@ -1,6 +1,6 @@
 {
   "name": "@mingchang137/pdf-to-image-node",
-  "version": "0.1.0",
+  "version": "0.0.0",
   "main": "index.js",
   "types": "index.d.ts",
   "napi": {
@@ -8,17 +8,17 @@
     "triples": {
       "defaults": false,
       "additional": [
+        "aarch64-apple-darwin",
         "aarch64-unknown-linux-gnu",
-        "aarch64-unknown-linux-musl",
-        "x86_64-unknown-linux-gnu",
-        "x86_64-unknown-linux-musl",
-        "universal-apple-darwin"
+        "x86_64-apple-darwin",
+        "x86_64-unknown-linux-gnu"
       ]
     }
   },
   "license": "MIT",
   "devDependencies": {
-    "@napi-rs/cli": "^2.18.4"
+    "@napi-rs/cli": "^2.18.4",
+    "ava": "^6.0.1"
   },
   "ava": {
     "timeout": "3m"
@@ -31,16 +31,11 @@
     "build": "napi build --platform --release",
     "build:debug": "napi build --platform",
     "prepublishOnly": "napi prepublish -t npm",
+    "test": "ava",
     "universal": "napi universal",
     "version": "napi version"
   },
-  "optionalDependencies": {
-    "pdf-to-image-node-linux-arm64-gnu": "0.1.0",
-    "pdf-to-image-node-linux-arm64-musl": "0.1.0",
-    "pdf-to-image-node-linux-x64-gnu": "0.1.0",
-    "pdf-to-image-node-linux-x64-musl": "0.1.0",
-    "pdf-to-image-node-darwin-universal": "0.1.0"
-  },
+  "packageManager": "yarn@4.3.1",
   "repository": "https://github.com/ming900518/pdf-to-image-node",
   "description": "不依賴 canvas 的 PDF 轉圖片 Node.js Library"
 }
