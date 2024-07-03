@@ -30,8 +30,7 @@ jobs:
                       build: yarn build --target x86_64-apple-darwin
                     - host: ubuntu-latest
                       target: x86_64-unknown-linux-gnu
-                      docker: ghcr.io/napi-rs/napi-rs/nodejs-rust:lts-debian
-                      build: sudo apt-get update && sudo apt-get install build-essential pkg-config libglib2.0-dev libcairo2-dev libpoppler-dev libpoppler-glib-dev -y && yarn build --target x86_64-unknown-linux-gnu
+                      build: sudo apt-get update && sudo apt-get install build-essential pkg-config libglib2.0-dev libcairo2-dev libpoppler-dev libpoppler-glib-dev -y && yarn build --target x86_64-unknown-linux-gnu && yarn build --target x86_64-unknown-linux-gnu
                     - host: macos-latest
                       target: aarch64-apple-darwin
                       build: yarn build --target aarch64-apple-darwin
@@ -91,16 +90,8 @@ jobs:
                   node-version: 20
                   cache: yarn
                   architecture: x86
-            - name: Build in docker
-              uses: addnab/docker-run-action@v3
-              if: ${{ matrix.settings.docker }}
-              with:
-                  image: ${{ matrix.settings.docker }}
-                  options: "--user 0:0 -v ${{ github.workspace }}/.cargo-cache/git/db:/usr/local/cargo/git/db -v ${{ github.workspace }}/.cargo/registry/cache:/usr/local/cargo/registry/cache -v ${{ github.workspace }}/.cargo/registry/index:/usr/local/cargo/registry/index -v ${{ github.workspace }}:/build -w /build"
-                  run: ${{ matrix.settings.build }}
             - name: Build
               run: ${{ matrix.settings.build }}
-              if: ${{ !matrix.settings.docker }}
               shell: bash
             - name: Upload artifact
               uses: actions/upload-artifact@v4
