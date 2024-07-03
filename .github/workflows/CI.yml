@@ -77,7 +77,7 @@ jobs:
               if: matrix.settings.host == 'macos-latest'
               run: brew install pkg-config glib cairo poppler
             - name: Install macOS x86 dependencies
-              if: matrix.settings.host == 'macos-latest-large'
+              if: matrix.settings.host == 'macos-13'
               run: brew install pkg-config glib cairo poppler
             - name: Setup node x86
               if: matrix.settings.target == 'i686-pc-windows-msvc'
