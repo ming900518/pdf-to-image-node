@@ -78,7 +78,7 @@ jobs:
               run: brew install pkg-config glib cairo poppler
             - name: Install Linux dependencies
               if: matrix.settings.host == 'ubuntu-latest'
-              run: sudo apt update && sudo apt install build-essentials pkg-config libglib2.0-dev libcairo2-dev libpoppler-dev libpoppler-glib-dev
+              run: sudo apt update && sudo apt install build-essential pkg-config libglib2.0-dev libcairo2-dev libpoppler-dev libpoppler-glib-dev
             - name: Setup node x86
               if: matrix.settings.target == 'i686-pc-windows-msvc'
               run: yarn config set supportedArchitectures.cpu "ia32"
