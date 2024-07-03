@@ -31,14 +31,14 @@ jobs:
                     - host: ubuntu-latest
                       target: x86_64-unknown-linux-gnu
                       docker: ghcr.io/napi-rs/napi-rs/nodejs-rust:lts-debian
-                      build: yarn build --target x86_64-unknown-linux-gnu
+                      build: sudo apt update && sudo apt install build-essential pkg-config libglib2.0-dev libcairo2-dev libpoppler-dev libpoppler-glib-dev && yarn build --target x86_64-unknown-linux-gnu
                     - host: macos-latest
                       target: aarch64-apple-darwin
                       build: yarn build --target aarch64-apple-darwin
                     - host: ubuntu-latest
                       target: aarch64-unknown-linux-gnu
                       docker: ghcr.io/napi-rs/napi-rs/nodejs-rust:lts-debian-aarch64
-                      build: yarn build --target aarch64-unknown-linux-gnu
+                      build: sudo apt update && sudo apt install build-essential pkg-config libglib2.0-dev libcairo2-dev libpoppler-dev libpoppler-glib-dev && yarn build --target aarch64-unknown-linux-gnu
         name: stable - ${{ matrix.settings.target }} - node@20
         runs-on: ${{ matrix.settings.host }}
         steps:
@@ -76,9 +76,6 @@ jobs:
             - name: Install macOS dependencies
               if: matrix.settings.host == 'macos-latest'
               run: brew install pkg-config glib cairo poppler
-            - name: Install Linux dependencies
-              if: matrix.settings.host == 'ubuntu-latest'
-              run: sudo apt update && sudo apt install build-essential pkg-config libglib2.0-dev libcairo2-dev libpoppler-dev libpoppler-glib-dev
             - name: Setup node x86
               if: matrix.settings.target == 'i686-pc-windows-msvc'
               run: yarn config set supportedArchitectures.cpu "ia32"
